@@ -1,0 +1,152 @@
+<section class="main" id="main" #main>
+  <header class="header" (scroll)="onScroll()" [ngClass]="headerFixed?'fixed':'no-fixed'">
+    <div class="container">
+      <div class="logo" (click)="scrollTo(main)">
+        <img src="./assets/images/Logo.svg" alt="Logo">
+      </div>
+      <nav class="nav">
+        <ul class="menu-list">
+          <li class="menu-item">
+            <a (click)="scrollTo(why)">Why Choose Us?</a>
+          </li>
+          <li class="menu-item">
+            <a (click)="scrollTo(products)">Burger Menu</a>
+          </li>
+          <li class="menu-item">
+            <a (click)="scrollTo(order)">Checkout</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="currency" id="change-currency" title="Change currency" (click)="changeCurrency()">{{currency}}</div>
+    </div>
+  </header>
+
+  <section class="main-content">
+    <div class="container">
+      <div class="main-info">
+        <span class="main-small-info">New Menu</span>
+        <h1 class="main-title">Cheddar Burger</h1>
+        <p class="main-text">
+          We have updated our menu, hurry up to try seasonal novelties and enjoy the excellent taste of our
+          burgers. We cook for you the best burgers in the city from selected marbled beef.
+        </p>
+
+        <div class="main-action">
+          <button class="button" id="main-action-button" (click)="scrollTo(products)" >See Menu</button>
+        </div>
+      </div>
+      <img src="./assets/images/main_burger.svg" alt="Big burger" class="main-image" [ngStyle]="mainImageStyle">
+    </div>
+  </section>
+  <section class="why" id="why" #why>
+    <div class="container">
+      <div class="common-title">why choose us?</div>
+
+      <div class="why-items">
+        <div class="why-item jello-horizontal">
+          <img src="./assets/images/Burger.svg" alt="Burger" class="why-item-image">
+          <div class="why-item-title">Author's beef</div>
+          <div class="why-item-text">
+            Our burgers have a unique combination of flavors and are unlike any other. We carefully select
+            the
+            best ingredients and flavor combinations for our menu.
+          </div>
+        </div>
+
+        <div class="why-item bounce-top">
+          <img src="./assets/images/Beef.svg" alt="Burger" class="why-item-image">
+          <div class="why-item-title">Marble beef</div>
+          <div class="why-item-text">
+            For our burgers, we use selected 100% marbled beef, which we buy exclusively from farmers. We
+            are
+            confident in the quality of our meat.
+          </div>
+        </div>
+
+        <div class="why-item  slide-right">
+          <img src="./assets/images/Truck.svg" alt="Burger" class="why-item-image">
+          <div class="why-item-title">Fast delivery</div>
+          <div class="why-item-text">
+            We deliver within the Moscow Ring Road in 30 minutes, and if we do not have time, delivery is
+            free.
+            We pack our burgers carefully so they don't get cold on the way.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="products" id="products" #products>
+    <div class="container">
+      <div class="common-title">choose your burger</div>
+      <div class="products-items">
+        <div class="products-item" *ngFor="let product of productsData">
+          <div class="products-item-image">
+            <img src="{{product.image}}" alt="Burger">
+          </div>
+          <div class="products-item-title">{{product.title}}</div>
+          <div class="products-item-text">
+            {{product.text}}
+          </div>
+          <div class="products-item-extra">
+            <div class="products-items-info">
+              <div class="products-item-price">{{product.price}} {{currency}}</div>
+              <div class="products-item-weight">{{product.grams}} gr</div>
+            </div>
+            <div class="products-item-action">
+              <button class="button product-button" (click)="scrollTo(order, product)">
+                <span>Order</span>
+                <span>
+                                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5 18C18.0304 18 18.5391 18.2107 18.9142 18.5858C19.2893 18.9609 19.5 19.4696 19.5 20C19.5 20.5304 19.2893 21.0391 18.9142 21.4142C18.5391 21.7893 18.0304 22 17.5 22C16.9696 22 16.4609 21.7893 16.0858 21.4142C15.7107 21.0391 15.5 20.5304 15.5 20C15.5 18.89 16.39 18 17.5 18ZM1.5 2H4.77L5.71 4H20.5C20.7652 4 21.0196 4.10536 21.2071 4.29289C21.3946 4.48043 21.5 4.73478 21.5 5C21.5 5.17 21.45 5.34 21.38 5.5L17.8 11.97C17.46 12.58 16.8 13 16.05 13H8.6L7.7 14.63L7.67 14.75C7.67 14.8163 7.69634 14.8799 7.74322 14.9268C7.79011 14.9737 7.8537 15 7.92 15H19.5V17H7.5C6.96957 17 6.46086 16.7893 6.08579 16.4142C5.71071 16.0391 5.5 15.5304 5.5 15C5.5 14.65 5.59 14.32 5.74 14.04L7.1 11.59L3.5 4H1.5V2ZM7.5 18C8.03043 18 8.53914 18.2107 8.91421 18.5858C9.28929 18.9609 9.5 19.4696 9.5 20C9.5 20.5304 9.28929 21.0391 8.91421 21.4142C8.53914 21.7893 8.03043 22 7.5 22C6.96957 22 6.46086 21.7893 6.08579 21.4142C5.71071 21.0391 5.5 20.5304 5.5 20C5.5 18.89 6.39 18 7.5 18ZM16.5 11L19.28 6H6.64L9 11H16.5Z"
+                                          fill="#191411"/>
+                                    </svg>
+                                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+  <section class="order" id="order" #order>
+    <div class="container">
+      <div class="order-title common-title">ordering</div>
+      <img src="./assets/images/food-delivery.svg" alt="Burger in the box" class="order-image" [ngStyle]="orderImageStyle">
+      <div class="order-form">
+        <div class="order-form-text">Fill in all the data and our manager will contact you to confirm the
+          order
+        </div>
+        <div class="order-form-inputs" [formGroup]="form">
+          <div class="order-form-input" [class]="{'error': form.get('order')?.invalid && (form.get('order')?.dirty || form.get('order')?.touched) }">
+            <input type="text" placeholder="Choose your burger in the list" id="burger" formControlName="order" readonly>
+          </div>
+          <div class="order-form-input" [class]="{'error': form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched) }">
+            <input type="text" placeholder="Your Name" id="name" formControlName="name">
+          </div>
+          <div class="order-form-input" [class]="{'error': form.get('phone')?.invalid && (form.get('phone')?.dirty || form.get('phone')?.touched) }">
+            <input type="text" placeholder="Your Phone Number" id="phone" formControlName="phone">
+          </div>
+          <button class="button" id="order-action" (click)="confirmOrder()" [disabled]="!form.valid">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="logo">
+        <img src="./assets/images/Logo.svg" alt="Logo">
+      </div>
+      <div class="right">All rights reserved</div>
+    </div>
+  </footer>
+<div class="loader" [class]="{'showed': loaderShowed}" *ngIf="loader">
+  <lottie-player src="./assets/burger.json" background="transparent" speed="1.5"  autoplay></lottie-player>
+</div>
+  opacity
+
+
+
+</section>
